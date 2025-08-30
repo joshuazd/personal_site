@@ -1,0 +1,27 @@
+languages_and_frameworks:
+  title: Languages & Frameworks
+  skills:
+    - Ruby on Rails
+    - Python
+    - Java (Spring MVC)
+    - SQL
+
+tools_and_platforms:
+  title: Tools & Platforms
+  skills:
+    - REST APIs
+    - Ansible
+    - Rundeck
+    - Git
+    - AWS SQS
+    - Terraform
+    - CircleCI
+    - Datadog
+
+technical_areas:
+  title: Technical Areas
+  skills:
+    - System architecture & design
+    - Authentication
+    - Internationalization & localization
+    - Billing & payment systems

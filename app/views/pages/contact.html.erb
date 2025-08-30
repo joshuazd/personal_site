@@ -1,0 +1,59 @@
+<section>
+  <h2 class="text-2xl font-bold text-gray-900 mb-6">Get in Touch</h2>
+
+  <p class="mb-8 text-gray-700 leading-relaxed">
+  I'm always open to connecting about software engineering and projects that make a positive impact.
+  <br/>
+  Based in St. Louis, open to remote opportunities.
+  </p>
+
+  <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
+
+  <div id="linkedin-fallback">
+    Connect with me on
+    <a href="https://www.linkedin.com/in/joshua-zink-duda"
+       class="ml-1 bg-[#0A66C2] text-white px-4 py-2 rounded-lg font-medium shadow hover:bg-[#064079] transition">
+      LinkedIn
+    </a>
+  </div>
+
+  <div class="linkedin-badge">
+    <div class="badge-base LI-profile-badge"
+         data-locale="en_US"
+         data-size="medium"
+         data-theme="light"
+         data-type="VERTICAL"
+         data-vanity="joshua-zink-duda"
+         data-version="v1">
+      <a class="badge-base__link LI-simple-link"
+         href="https://www.linkedin.com/in/joshua-zink-duda?trk=profile-badge"></a>
+    </div>
+  </div>
+
+  <script>
+    // Poll until LinkedIn badge has replaced the container
+    const observer = new MutationObserver((mutations, obs) => {
+      const badge = document.querySelector('#linkedin-badge iframe');
+      if (badge) {
+        document.getElementById('linkedin-fallback').style.display = 'none';
+        obs.disconnect(); // stop observing once badge loads
+      }
+    });
+
+    observer.observe(document.getElementById('linkedin-badge'), { childList: true });
+  </script>
+  <!-- If JS is completely disabled, fallback still shows -->
+  <noscript>
+    <div id="linkedin-fallback">
+      Connect with me on
+      <a href="https://www.linkedin.com/in/joshua-zink-duda"
+         class="ml-1 bg-[#0A66C2] text-white px-4 py-2 rounded-lg font-medium shadow hover:bg-[#064079] transition">
+        LinkedIn
+      </a>
+    </div>
+  </noscript>
+
+
+  <p class="mt-8 text-gray-700 leading-relaxed">
+  </p>
+</section>

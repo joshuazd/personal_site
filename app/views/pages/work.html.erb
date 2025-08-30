@@ -1,0 +1,33 @@
+<section>
+  <h2 class="text-2xl font-bold text-gray-900 mb-6">My Work</h2>
+
+  <div class="space-y-8">
+    <% @work_experiences.each do |job| %>
+      <div class="p-6 bg-white shadow rounded-xl">
+        <h2 class="text-xl font-bold"><%= job["role"] %> at <%= job["company"] %></h2>
+        <p class="text-gray-600"><%= job["timeframe"] %></p>
+        <p class="mt-2"><%= job["summary"] %></p>
+
+        <ul class="mt-4 space-y-2">
+          <% job["projects"].each do |project| %>
+            <li>
+              <strong><%= project["name"] %>:</strong>
+              <span class="text-gray-700"><%= project["description"] %></span>
+              <% if project["tech"] %>
+                <div class="mb-6 mt-2">
+                  <div class="flex flex-wrap gap-3">
+                    <% project["tech"]&.each do |tech| %>
+                      <span class="px-3 py-1 bg-gray-200 rounded-full text-sm"><%= tech %></span>
+                    <% end %>
+                  </div>
+                </div>
+              <% else %>
+                <div class="mb-6"></div>
+              <% end %>
+  </li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  </div>
+</section>

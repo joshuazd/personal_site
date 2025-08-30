@@ -1,0 +1,13 @@
+<section>
+  <h2 class="text-2xl font-bold text-gray-900 mb-6">About Me</h2>
+  <p class="mb-8 text-gray-700 leading-relaxed">
+    I'm Joshua Zink-Duda, a software engineer with over 9 years of experience primarily in backend development.
+    I have worked with a variety of languages and frameworks, but I find the tools used are less important than what you do with them.
+    I enjoy writing clean code and designing maintainable systems that have a positive impact on the world.
+  </p>
+
+  <h2 class="text-xl font-bold text-gray-900 mb-2">Skills</h2>
+  <% skills_data.each_value do |section| %>
+    <%= skill_section(section["title"], section["skills"]) %>
+  <% end %>
+</section>

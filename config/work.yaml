@@ -1,0 +1,75 @@
+- company: Aurora Solar
+  role: Senior Software Engineer
+  timeframe: 2024–2025
+  summary: >
+    Led backend initiatives focused on billing and customer retention
+  projects:
+    - name: Dunning Process
+      description: Designed and implemented key components of a new dunning process, a system for managing overdue payments, to improve revenue recovery and customer retention
+      tech:
+        - Python
+        - Next.js
+        - Zuora
+    - name: Credit Auto-Reload
+      description: Developed an auto-reload feature for a customer credit-tracking application
+      tech:
+        - Python
+        - AWS SQS
+        - Terraform
+    - name: Self-Serve App Integration
+      description: Built the integration for a new customer self-serve signup app, supporting a product-led growth initiative that drove 400+ new customer signups in 6 months
+      tech:
+        - Ruby on Rails
+        - Packwerk
+- company: Aurora Solar
+  role: Software Engineer
+  timeframe: 2021–2024
+  summary: >
+    Drove projects around authentication and core product features
+  projects:
+    - name: SSO Rewrite
+      description: Proposed and led a rewrite of the single sign-on system to eliminate manual onboarding, enable self-service configuration, and improve customer autonomy, which led to 90% reduction in engineering support for SSO
+      tech:
+        - Ruby on Rails
+        - OpenID Connect
+        - PostgreSQL
+    - name: Internationalization
+      description: Drove the effort to internationalize the backend codebase, delivering features 2 weeks early and accelerating company-wide translation efforts
+      tech:
+        - Ruby on Rails
+        - rails-i18n
+        - Crowdin
+    - name: Duplicate Detection
+      description: Automated duplicate project detection, reducing duplicates by 36% and saving customers $100k over 12 months while eliminating hours of manual support work
+      tech:
+        - Ruby on Rails
+        - PostgreSQL
+    - name: Project Milestones
+      description: Architected a milestones feature, collaborating with product and engineering to refine scope and deliver a streamlined MVP which improved customer reliability and trust
+      tech:
+        - Ruby on Rails
+- company: Panera Bread
+  role: Software Engineer
+  timeframe: 2016–2021
+  summary: >
+    Developed and maintained enterprise applications supporting customer experience and operations.
+  projects:
+    - name: Lead Developer
+      description: Promoted to team lead in 2019, owning architecture, project management, and feature prioritization while continuining hands-on developement and QA
+    - name: API Development
+      description: Designed, developed, and deployed 200+ APIs for an ESB handling 5+ million daily transactions, including integrations with Apple and Facebook for authentication and syncing customer data from Salesforce
+      tech:
+        - WSO2 ESB
+        - Oracle SQL
+        - JMS Queues
+    - name: Data Synchronization
+      description: Built scheduled Java services using Spring MVC to ingest thousands of daily records from third-party vendors, such as customer surveys and order tracking, into internal Panera systems
+      tech:
+        - Java
+        - Spring MVC
+    - name: Deployment Automation
+      description: Automated deployments of ESB and Java services using Ansible and Rundeck, increasing deployment speed and reducing manual intervention
+      tech:
+        - Ansible
+        - Rundeck
+
