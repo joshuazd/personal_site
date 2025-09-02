@@ -6,8 +6,6 @@
 
 # Rails.application.configure do
 # config.content_security_policy do |policy|
-# policy.script_src :self, :https, "https://platform.linkedin.com"
-# policy.script_src :self, :https, "https://www.linkedin.com"
 #     policy.default_src :self, :https
 #     policy.font_src    :self, :https, :data
 #     policy.img_src     :self, :https, :data
@@ -25,12 +23,3 @@
 #   # Report violations without enforcing the policy.
 #   # config.content_security_policy_report_only = true
 # end
-#
-Rails.application.config.content_security_policy do |policy|
-  policy.default_src :self
-  policy.script_src :self, "https://platform.linkedin.com",
-    "https://badges.linkedin.com"
-  policy.frame_src "https://www.linkedin.com", "https://badges.linkedin.com", "https://platform.linkedin.com"
-  policy.connect_src "https://www.linkedin.com", "https://platform.linkedin.com", "https://badges.linkedin.com"
-  policy.img_src :self, :https, :data
-end

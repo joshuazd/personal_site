@@ -11,53 +11,13 @@
   Based in St. Louis, open to remote opportunities.
   </p>
 
-
-  <div id="linkedin-fallback">
-    Connect with me on
+  <div class="mb-8">
     <a href="https://www.linkedin.com/in/joshua-zink-duda"
-       class="ml-1 bg-[#0A66C2] text-white px-4 py-2 rounded-lg font-medium shadow hover:bg-[#064079] transition">
-      LinkedIn
+       class="inline-flex items-center px-4 py-2 bg-[#0A66C2] text-white rounded-lg font-medium shadow hover:bg-[#064079] transition">
+      <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M19 0h-14c-2.8 0-5 2.2-5 5v14c0 2.8 2.2 5 5 5h14c2.8 0 5-2.2 5-5v-14c0-2.8-2.2-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.2c-1 0-1.8-.8-1.8-1.8s.8-1.8 1.8-1.8 1.8.8 1.8 1.8-.8 1.8-1.8 1.8zm13.5 11.2h-3v-5.4c0-1.3-.5-2.2-1.7-2.2-1 0-1.5.7-1.7 1.4-.1.2-.1.5-.1.8v5.4h-3v-10h3v1.4c.4-.6 1.1-1.4 2.7-1.4 2 0 3.5 1.3 3.5 4.1v6z"/>
+      </svg>
+      Connect on LinkedIn
     </a>
   </div>
-
-  <div id="linkedin-badge" class="linkedin-badge">
-    <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
-    <div class="badge-base LI-profile-badge"
-         data-locale="en_US"
-         data-size="medium"
-         data-theme="light"
-         data-type="VERTICAL"
-         data-vanity="joshua-zink-duda"
-         data-version="v1">
-      <a class="badge-base__link LI-simple-link"
-         href="https://www.linkedin.com/in/joshua-zink-duda?trk=profile-badge"></a>
-    </div>
-  </div>
-
-  <script>
-    // Poll until LinkedIn badge has replaced the container
-    const observer = new MutationObserver((mutations, obs) => {
-      const badge = document.querySelector('#linkedin-badge iframe');
-      if (badge) {
-        document.getElementById('linkedin-fallback').style.display = 'none';
-        obs.disconnect(); // stop observing once badge loads
-      }
-    });
-
-    observer.observe(document.getElementById('linkedin-badge'), { childList: true });
-  </script>
-  <!-- If JS is completely disabled, fallback still shows -->
-  <noscript>
-    <div id="linkedin-fallback">
-      Connect with me on
-      <a href="https://www.linkedin.com/in/joshua-zink-duda"
-         class="ml-1 bg-[#0A66C2] text-white px-4 py-2 rounded-lg font-medium shadow hover:bg-[#064079] transition">
-        LinkedIn
-      </a>
-    </div>
-  </noscript>
-
-
-  <p class="mt-8 text-gray-700 leading-relaxed">
-  </p>
 </section>
