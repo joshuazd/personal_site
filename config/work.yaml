@@ -27,8 +27,8 @@
   summary: >
     Drove projects around authentication and core product features
   projects:
-    - name: SSO Rewrite
-      description: Proposed and led a rewrite of the single sign-on system to eliminate manual onboarding, enable self-service configuration, and improve customer autonomy, which led to 90% reduction in engineering support for SSO
+    - name: Single Sign-On Rewrite
+      description: Proposed and led a rewrite of the Single Sign-On (SSO) system to eliminate manual onboarding, enable self-service configuration, and improve customer autonomy, leading to a 90% reduction in engineering support for SSO
       tech:
         - Ruby on Rails
         - OpenID Connect
@@ -57,16 +57,16 @@
     - name: Lead Developer
       description: Promoted to team lead in 2019, owning architecture, project management, and feature prioritization while continuining hands-on developement and QA
     - name: API Development
-      description: Designed, developed, and deployed 200+ APIs for an ESB handling 5+ million daily transactions, including integrations with Apple and Facebook for authentication and syncing customer data from Salesforce
+      description: Designed, developed, and deployed 200+ APIs for an Enterprise Service Bus (ESB) handling 5+ million daily transactions, including integrations with Apple and Facebook for authentication and syncing customer data from Salesforce
       tech:
         - WSO2 ESB
         - Oracle SQL
         - JMS Queues
     - name: Data Synchronization
-      description: Built scheduled Java services using Spring MVC to ingest thousands of daily records from third-party vendors, such as customer surveys and order tracking, into internal Panera systems
+      description: Built scheduled Java services using Spring to ingest thousands of daily records from third-party vendors, such as customer surveys and order tracking, into internal Panera systems
       tech:
         - Java
-        - Spring MVC
+        - Spring
     - name: Deployment Automation
       description: Automated deployments of ESB and Java services using Ansible and Rundeck, increasing deployment speed and reducing manual intervention
       tech:

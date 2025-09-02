@@ -32,6 +32,9 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+/config/secrets.yaml
+
+/app/latex/*.tex
 
 /app/assets/builds/*
 !/app/assets/builds/.keep

@@ -1,0 +1,62 @@
+
+\documentclass[11pt,a4paper,sans]{moderncv} % Font sizes: 10, 11, or 12; paper sizes: a4paper, letterpaper, a5paper, legalpaper, executivepaper or landscape; font families: sans or roman
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+\moderncvstyle{casual} % CV theme - options include: 'casual' (default), 'classic', 'oldstyle' and 'banking'
+\moderncvcolor{black} % CV color - options include: 'blue' (default), 'orange', 'green', 'red', 'purple', 'grey' and 'black'
+
+\usepackage[scale=0.85]{geometry} % Reduce document margins
+
+<%# NAME AND CONTACT INFO %>
+
+\firstname{} % Your first name
+\familyname{<%= info["name"] %>} % Your last name
+
+<% if include_personal %>
+\address{<%= escape.call(secrets["location"]) %>}
+\mobile{<%= escape.call(secrets["phone"]) %>}
+\email{<%= escape.call(secrets["email"]) %>}
+<% end %>
+\social[linkedin][]{<%= info["linkedin"] %>}
+\homepage{<%= info["homepage"] %>}{}
+
+%----------------------------------------------------------------------------
+\begin{document}
+
+\makecvtitle % Print the CV title
+\vspace{-1.0cm}
+
+<%# WORK EXPERIENCE SECTION %>
+
+\section{Work Experience}
+<% work.each do |w| %>
+\cventry{<%= w["timeframe"] %>}{<%= w["role"] %>}{\textsc{<%= w["company"] %>}}{}{}{
+\begin{itemize}
+  <% w["projects"].each do |project| %>\item <%= escape.call(project["description"]) %><% end %>
+\end{itemize}}
+<% end %>
+
+
+
+<%# COMPUTER SKILLS SECTION %>
+
+\section{Skills}
+
+<% skills.each do |_, skill| %>
+
+\cventry{}{<%= escape.call(skill["title"]) %>}{}{}{}{
+<%= escape.call(skill["skills"].join(", ")) %>
+}
+<% end %>
+
+
+<%# EDUCATION SECTION %>
+
+\section{Education}
+
+<% edu = info["education"] %>
+\cventry{<%= edu["timeframe"] %>}{<%= edu["degree"] %>}{\textsc{<%= edu["school"] %>}}{}{}{\normalsize Majors: <%= edu["major"] %> \newline Minor: <%= edu["minor"] %>}
+
+\end{document}
