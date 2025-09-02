@@ -7,6 +7,8 @@ namespace :pdf do
   task :generate, [ :include_personal ] => :environment do |t, args|
     include_personal = args[:include_personal] == "true"
 
+    ENV["PATH"] = "/usr/local/texlive/2025/bin/x86_64-linux:#{ENV['PATH']}"
+
     @work = YAML.load_file("config/work.yaml")
     @info = YAML.load_file("config/info.yaml")
     @skills = YAML.load_file("config/skills.yaml")
