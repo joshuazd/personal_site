@@ -24,7 +24,7 @@ namespace :pdf do
     File.write(tex_file, tex_output)
 
     Dir.chdir(Rails.root.join("app/latex")) do
-      system("TEXINPUTS=#{Rails.root.join('app/latex/fonts/fontawesome//:')} pdflatex -output-directory=#{Rails.root.join('tmp')} #{tex_file}")
+      system("TEXINPUTS=#{Rails.root.join('app/latex/fonts/fontawesome//:')} lualatex -output-directory=#{Rails.root.join('tmp')} #{tex_file}")
     end
   end
 end
