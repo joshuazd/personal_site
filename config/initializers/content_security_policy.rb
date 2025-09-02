@@ -30,6 +30,7 @@ Rails.application.config.content_security_policy do |policy|
   policy.default_src :self
   policy.script_src :self, "https://platform.linkedin.com",
     "https://badges.linkedin.com"
-  policy.frame_src "https://www.linkedin.com"
+  policy.frame_src "https://www.linkedin.com", "https://badges.linkedin.com", "https://platform.linkedin.com"
+  policy.connect_src "https://www.linkedin.com", "https://platform.linkedin.com", "https://badges.linkedin.com"
   policy.img_src :self, :https, :data
 end
