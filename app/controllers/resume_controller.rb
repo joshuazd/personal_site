@@ -3,8 +3,11 @@ class ResumeController < ApplicationController
     pdf_path = Rails.root.join("tmp/resume.pdf")
 
     unless File.exist?(pdf_path)
+
       logger.info "Generating pdf..."
-      system("bundle exec rails 'pdf:generate[false]'")
+      Rails.application.load_tasks
+      Rake::Task["pdf:generate"].reenable
+      Rask::Task["pdf:generate"].invoke(false)
     end
 
     send_file pdf_path,
