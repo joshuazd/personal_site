@@ -25,3 +25,10 @@
 #   # Report violations without enforcing the policy.
 #   # config.content_security_policy_report_only = true
 # end
+#
+Rails.application.config.content_security_policy do |policy|
+  policy.default_src :self
+  policy.script_src :self, "https://platform.linkedin.com"
+  policy.frame_src "https://www.linkedin.com"
+  policy.img_src :self, :https, :data
+end
