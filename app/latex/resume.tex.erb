@@ -33,6 +33,7 @@
 \section{Work Experience}
 <% work.each do |w| %>
 \cventry{<%= w["timeframe"] %>}{<%= w["role"] %>}{\textsc{<%= w["company"] %>}}{}{}{
+\textit{<%= escape.call(w["summary"]) %>}\vspace{0.5em}
 \begin{itemize}
   <% w["projects"].each do |project| %>\item <%= escape.call(project["description"]) %><% end %>
 \end{itemize}}

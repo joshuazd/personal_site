@@ -10,17 +10,17 @@
         - Python
         - Next.js
         - Zuora
-    - name: Credit Auto-Reload
-      description: Developed an auto-reload feature for a customer credit-tracking application
-      tech:
-        - Python
-        - AWS SQS
-        - Terraform
     - name: Self-Serve App Integration
       description: Built the integration for a new customer self-serve signup app, supporting a product-led growth initiative that drove 400+ new customer signups in 6 months
       tech:
         - Ruby on Rails
         - Packwerk
+    - name: Credit Auto-Reload
+      description: Developed an auto-reload feature for a customer credit-tracking application, ensuring accurate billing for self-serve customers
+      tech:
+        - Python
+        - AWS SQS
+        - Terraform
 - company: Aurora Solar
   role: Software Engineer
   timeframe: 2021–2024
@@ -48,11 +48,13 @@
       description: Architected a milestones feature, collaborating with product and engineering to refine scope and deliver a streamlined MVP which improved customer reliability and trust
       tech:
         - Ruby on Rails
+    - name: Interviews
+      description: Conducted 15+ behavioral and technical interview for candidates ranging from junior to staff levels
 - company: Panera Bread
   role: Software Engineer
   timeframe: 2016–2021
   summary: >
-    Developed and maintained enterprise applications supporting customer experience and operations.
+    Developed and maintained enterprise applications supporting customer experience and operations
   projects:
     - name: Lead Developer
       description: Promoted to team lead in 2019, owning architecture, project management, and feature prioritization while continuining hands-on developement and QA
