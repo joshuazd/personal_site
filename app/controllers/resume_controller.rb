@@ -3,6 +3,7 @@ class ResumeController < ApplicationController
     pdf_path = Rails.root.join("tmp/resume.pdf")
 
     unless File.exist?(pdf_path)
+      logger.info "Generating pdf..."
       system("bundle exec rails 'pdf:generate[false]'")
     end
 
