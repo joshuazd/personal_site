@@ -7,7 +7,7 @@ class ResumeController < ApplicationController
       logger.info "Generating pdf..."
       Rails.application.load_tasks
       Rake::Task["pdf:generate"].reenable
-      Rask::Task["pdf:generate"].invoke(false)
+      Rake::Task["pdf:generate"].invoke(false)
     end
 
     send_file pdf_path,
