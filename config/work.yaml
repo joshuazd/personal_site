@@ -57,7 +57,7 @@
     Developed and maintained enterprise applications supporting customer experience and operations
   projects:
     - name: Lead Developer
-      description: Promoted to team lead in 2019, owning architecture, project management, and feature prioritization while continuining hands-on developement and QA
+      description: Promoted to team lead in 2019, owning architecture, project management, and feature prioritization while continuing hands-on development and QA
     - name: API Development
       description: Designed, developed, and deployed 200+ APIs for an Enterprise Service Bus (ESB) handling 5+ million daily transactions, including integrations with Apple and Facebook for authentication and syncing customer data from Salesforce
       tech:
