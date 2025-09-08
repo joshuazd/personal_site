@@ -47,8 +47,11 @@
 
 <% skills.each do |_, skill| %>
 
-\cventry{}{<%= escape.call(skill["title"]) %>}{}{}{}{
-<%= escape.call(skill["skills"].join(", ")) %>
+  \cventry{}{<%= escape.call(skill["title"]) %>}{}{}{}{
+  <% if skill["skills"].kind_of?(Array) %><%= escape.call(skill["skills"].join(", ")) %><% else %> \begin{tabular}{ l l }
+  \textit{Skilled in:} & <%= escape.call(skill["skills"]["skilled"].join(", "))  %> \\
+  \textit{Familiar with: } & <%= escape.call(skill["skills"]["familiar"].join(", "))  %> \\
+  \end{tabular}<% end %>
 }
 <% end %>
 
