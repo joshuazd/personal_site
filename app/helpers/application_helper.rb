@@ -5,11 +5,15 @@ module ApplicationHelper
   end
 
   def skill_list(skills, title = nil, level = :skilled, styles = "")
-    content_tag(:div, class: "flex flex-wrap gap-3 #{styles}") do
+    content_tag(:div, class: "flex #{styles}") do
       if title
-        concat(content_tag(:span, title, class: "font-semibold text-gray-700 self-center mr-2"))
+        concat(content_tag(:div, title, class: "w-28 shrink-0 font-semibold text-gray-700"))
       end
-      skills.each { |skill| concat(skill_tag(skill, level)) }
+      concat(
+        content_tag(:div, class: "flex flex-wrap gap-3") do
+          skills.each { |skill| concat(skill_tag(skill, level)) }
+        end
+      )
     end
   end
 
