@@ -48,6 +48,7 @@
       description: Architected a milestones feature, collaborating with product and engineering to refine scope and deliver a streamlined MVP which improved customer reliability and trust
       tech:
         - Ruby on Rails
+        - PostgreSQL
     - name: Interviews
       description: Conducted 15+ behavioral and technical interview for candidates ranging from junior to staff levels
 - company: Panera Bread

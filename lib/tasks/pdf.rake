@@ -19,7 +19,7 @@ namespace :pdf do
     end
 
     erb_file = Rails.root.join("app/latex/resume.tex.erb")
-    template = ERB.new(File.read(erb_file))
+    template = ERB.new(File.read(erb_file), trim_mode: "-")
     tex_output = template.result_with_hash(info: @info, work: @work, skills: @skills, secrets: @secrets, include_personal: include_personal, escape: LatexHelpers.method(:escape))
 
     tex_file = Rails.root.join("app/latex/resume.tex")

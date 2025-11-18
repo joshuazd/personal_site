@@ -28,32 +28,37 @@
 \makecvtitle % Print the CV title
 \vspace{-1.0cm}
 
-<%# WORK EXPERIENCE SECTION %>
+<%# EXPERIENCE SECTION %>
 
-\section{Work Experience}
+\section{Experience}
 <% work.each do |w| %>
 \cventry{<%= w["timeframe"] %>}{<%= w["role"] %>}{\textsc{<%= w["company"] %>}}{}{}{
-\textit{<%= escape.call(w["summary"]) %>}\vspace{0.5em}
+\textit{<%= escape.call(w["summary"]) %>}\vspace{0.3em}
 \begin{itemize}
-  <% w["projects"].each do |project| %>\item <%= escape.call(project["description"]) %><% end %>
+    <% w["projects"].each do |project| %>\item <%= escape.call(project["description"]) -%>
+<% if project["tech"] && project["tech"].any? %>
+    \\ {\small\textbf{Technologies:} <%= project["tech"].map { |t| escape.call(t) }.join(" | ") %>}
+    <% end -%>
+\vspace{0.3em}
+<% end -%>
 \end{itemize}}
 <% end %>
 
 
 
-<%# COMPUTER SKILLS SECTION %>
+<%# <%1# SKILLS SECTION %1> %>
 
-\section{Skills}
+<%# \section{Skills} %>
 
-<% skills.each do |_, skill| %>
+<%# <% skills.each do |_, skill| %1> %>
 
-  \cventry{}{<%= escape.call(skill["title"]) %>}{}{}{}{
-  <% if skill["skills"].kind_of?(Array) %><%= escape.call(skill["skills"].join(", ")) %><% else %> \begin{tabular}{ l l }
-  \textit{Skilled in:} & <%= escape.call(skill["skills"]["skilled"].join(", "))  %> \\
-  \textit{Familiar with: } & <%= escape.call(skill["skills"]["familiar"].join(", "))  %> \\
-  \end{tabular}<% end %>
-}
-<% end %>
+<%#   \cventry{}{<%= escape.call(skill["title"]) %1>}{}{}{}{ %>
+<%#   <% if skill["skills"].kind_of?(Array) %1><%= escape.call(skill["skills"].join(", ")) %1><% else %1> \begin{tabular}{ l l } %>
+<%#   \textit{Skilled in:} & <%= escape.call(skill["skills"]["skilled"].join(", "))  %1> \\ %>
+<%#   \textit{Familiar with: } & <%= escape.call(skill["skills"]["familiar"].join(", "))  %1> \\ %>
+<%#   \end{tabular}<% end %1> %>
+<%# } %>
+<%# <% end %1> %>
 
 
 <%# EDUCATION SECTION %>
