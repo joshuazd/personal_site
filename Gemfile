@@ -64,9 +64,9 @@ end
 
 gem "tailwindcss-ruby", "~> 4.1"
 
-gem "tailwindcss-rails", "~> 4.3"
+gem "tailwindcss-rails", "~> 4.4"
 
-gem "pry", "~> 0.15.2"
+gem "pry", "~> 0.16.0"
 
 gem "foreman", "~> 0.90.0"
 
