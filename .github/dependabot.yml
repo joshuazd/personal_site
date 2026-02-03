@@ -1,18 +1,12 @@
 version: 2
-registries:
-  github-token:
-    type: github
-    token: ${{ secrets.DEPENDABOT_PAT }}
 updates:
 - package-ecosystem: bundler
   directory: "/"
   schedule:
     interval: daily
   open-pull-requests-limit: 10
-  registries: ["github-token"]
 - package-ecosystem: github-actions
   directory: "/"
   schedule:
     interval: daily
   open-pull-requests-limit: 10
-  registries: ["github-token"]
