@@ -57,7 +57,7 @@ jobs:
       - name: Copy prebuilt assets to server
         run: |
           tar czf assets.tar.gz -C public assets
-          scp -i ~/.ssh/deploy_key -P ${{ secrets.SSH_PORT }} assets.tar.gz ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/tmp/assets.tar.gz
+          sftp -i ~/.ssh/deploy_key -P ${{ secrets.SSH_PORT }} ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} <<< "put assets.tar.gz /tmp/assets.tar.gz"
 
       - name: Extract assets on server
         uses: appleboy/ssh-action@v1.2.5
