@@ -14,75 +14,11 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v6
-
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: .ruby-version
-          bundler-cache: true
-
-      - name: Precompile assets
-        env:
-          SECRET_KEY_BASE_DUMMY: 1
-        run: bundle exec rails assets:precompile
-
-      - name: Fetch and checkout on server
+      - name: Deploy to server
         uses: appleboy/ssh-action@v1.2.5
         with:
           host: ${{ secrets.SSH_HOST }}
           port: ${{ secrets.SSH_PORT }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: |
-            set -e
-            set -o allexport
-            source /etc/personal_site/personal_site.env
-            set +o allexport
-            git --git-dir=/home/joshua/bare_site.git fetch origin main:main
-            git --work-tree=/var/www/personal_site --git-dir=/home/joshua/bare_site.git checkout -f
-            cd /var/www/personal_site
-            /home/joshua/.rbenv/versions/3.4.3/bin/bundle config set deployment true
-            /home/joshua/.rbenv/versions/3.4.3/bin/bundle config set without 'development test'
-            /home/joshua/.rbenv/versions/3.4.3/bin/bundle install
-
-      - name: Set up SSH key
-        run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key
-          chmod 600 ~/.ssh/deploy_key
-          ssh-keyscan -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
-
-      - name: Copy prebuilt assets to server
-        run: |
-          tar czf assets.tar.gz -C public assets
-          ssh -T -i ~/.ssh/deploy_key -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cat > /tmp/assets.tar.gz" < assets.tar.gz
-
-      - name: Extract assets on server
-        uses: appleboy/ssh-action@v1.2.5
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          port: ${{ secrets.SSH_PORT }}
-          username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: |
-            rm -rf /var/www/personal_site/public/assets
-            tar xzf /tmp/assets.tar.gz -C /var/www/personal_site/public
-            rm /tmp/assets.tar.gz
-
-      - name: Generate PDF and restart
-        uses: appleboy/ssh-action@v1.2.5
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          port: ${{ secrets.SSH_PORT }}
-          username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: |
-            set -e
-            set -o allexport
-            source /etc/personal_site/personal_site.env
-            set +o allexport
-            cd /var/www/personal_site
-            /home/joshua/.rbenv/versions/3.4.3/bin/bundle exec rails "pdf:generate[false]"
-            sudo systemctl restart personal_site
+          script: echo "Deployment triggered"
