@@ -55,6 +55,24 @@ jobs:
       - name: Lint code for consistent style
         run: bin/rubocop -f github
 
+  boot_check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: .ruby-version
+          bundler-cache: true
+
+      - name: Verify app boots in production mode
+        env:
+          RAILS_ENV: production
+          SECRET_KEY_BASE: dummy_key_for_ci_boot_check
+        run: bin/rails runner "Rails.application.eager_load!; puts 'Boot check passed'"
+
   test:
     runs-on: ubuntu-latest
 
