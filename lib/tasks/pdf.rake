@@ -3,11 +3,13 @@ require "yaml"
 require Rails.root.join("lib/latex_helpers")
 
 namespace :pdf do
-  desc "TODO"
+  desc "Generate resume PDF from LaTeX template"
   task :generate, [ :include_personal ] => :environment do |t, args|
     include_personal = args[:include_personal] == "true"
 
-    ENV["PATH"] = "/usr/local/texlive/2025/bin/x86_64-linux:#{ENV['PATH']}"
+    unless system("which lualatex > /dev/null 2>&1")
+      ENV["PATH"] = "/usr/local/texlive/2025/bin/x86_64-linux:#{ENV['PATH']}"
+    end
 
     @work = YAML.load_file("config/work.yaml")
     @info = YAML.load_file("config/info.yaml")
