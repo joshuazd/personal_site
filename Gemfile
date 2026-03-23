@@ -71,3 +71,5 @@ gem "pry", "~> 0.16.0"
 gem "foreman", "~> 0.90.0"
 
 gem "prawn", "~> 2.5"
+
+gem "image_processing", "~> 1.2"
