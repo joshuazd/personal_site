@@ -1,16 +1,16 @@
 module ApplicationHelper
   def skill_tag(name, level = :skilled)
-    colors = { skilled: "bg-indigo-200", familiar: "bg-indigo-50" }
-    content_tag(:span, name, class: "px-3 py-1 #{colors[level]} rounded-full text-sm")
+    css_class = level == :familiar ? "skill-tag skill-tag--familiar" : "skill-tag skill-tag--skilled"
+    content_tag(:span, name, class: css_class)
   end
 
-  def skill_list(skills, title = nil, level = :skilled, styles = "")
-    content_tag(:div, class: "flex #{styles}") do
+  def skill_list(skills, title = nil, level = :skilled)
+    content_tag(:div, class: "skill-list") do
       if title
-        concat(content_tag(:div, title, class: "w-28 shrink-0 font-semibold text-gray-700"))
+        concat(content_tag(:div, title, class: "skill-list-label"))
       end
       concat(
-        content_tag(:div, class: "flex flex-wrap gap-3") do
+        content_tag(:div, class: "skill-tags") do
           skills.each { |skill| concat(skill_tag(skill, level)) }
         end
       )
@@ -18,12 +18,12 @@ module ApplicationHelper
   end
 
   def skill_section(title, skills)
-    content_tag(:section, class: "mb-8") do
-      concat(content_tag(:h3, title, class: "text-xl mb-4"))
+    content_tag(:section, class: "skill-section") do
+      concat(content_tag(:h3, title))
       if skills.kind_of?(Array)
         concat(skill_list(skills))
       else
-        concat(skill_list(skills["skilled"], "Skilled in", :skilled, "mb-3"))
+        concat(skill_list(skills["skilled"], "Skilled in", :skilled))
         concat(skill_list(skills["familiar"], "Familiar with", :familiar))
       end
     end

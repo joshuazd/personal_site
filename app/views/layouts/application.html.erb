@@ -28,28 +28,27 @@
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
-    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="overflow-y-auto">
-    <header class="bg-white shadow">
-      <div class="max-w-5xl mx-auto px-4 py-4 flex flex-wrap justify-between items-center">
-        <%= link_to "Joshua Zink-Duda", root_path, class: "text-xl font-bold text-gray-900" %>
-        <nav class="flex flex-wrap gap-4">
-          <%= link_to "About", about_path, class: "text-gray-600 hover:text-gray-900" %>
-          <%= link_to "Work", work_path, class: "text-gray-600 hover:text-gray-900" %>
-          <%= link_to "Contact", contact_path, class: "text-gray-600 hover:text-gray-900" %>
+  <body>
+    <header>
+      <div class="container">
+        <%= link_to "Joshua Zink-Duda", root_path, class: "site-title" %>
+        <nav>
+          <%= link_to "About", about_path, class: "nav-link" %>
+          <%= link_to "Work", work_path, class: "nav-link" %>
+          <%= link_to "Contact", contact_path, class: "nav-link" %>
         </nav>
       </div>
     </header>
 
-    <main class="max-w-5xl mx-auto px-4 py-12">
+    <main class="container">
       <%= yield %>
     </main>
 
-    <footer class="bg-white border-t mt-12">
-      <div class="max-w-5xl mx-auto px-4 py-6 text-center text-sm text-gray-500">
+    <footer>
+      <div class="container">
         <p>&copy; <%= Time.now.year %> Joshua Zink-Duda</p>
     </footer>
   </body>

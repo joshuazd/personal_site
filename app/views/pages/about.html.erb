@@ -1,25 +1,25 @@
 <section>
 
-  <div class="flex items-center justify-between mb-6">
-    <h2 class="text-2xl font-bold text-gray-900">About Me</h2>
+  <div class="page-header">
+    <h2 class="page-title">About Me</h2>
     <%= link_to resume_download_path,
-      class: "inline-flex items-center px-4 py-2 bg-blue-900 text-white rounded-lg shadow hover:bg-blue-800 transition",
+      class: "btn",
       target: "_blank",
       data: { turbo: false } do %>
-      <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <svg class="btn-icon" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <path d="M5 20h14v-2H5v2zm7-18v12l4-4h-3V4h-2v6H8l4 4z"/>
       </svg>
       Download Resume
     <% end %>
   </div>
 
-  <p class="mb-8 text-gray-700 leading-relaxed">
-  I’m Joshua Zink-Duda, a software engineer who thrives on tackling ambiguous systems and turning them into something clear and maintainable.
+  <p class="body-text">
+  I'm Joshua Zink-Duda, a software engineer who thrives on tackling ambiguous systems and turning them into something clear and maintainable.
   I enjoy automating tedious processes, eliminating friction, and designing solutions that scale.
   What motivates me most is applying these skills to problems that matter and projects where good engineering creates a positive impact on the world.
   </p>
 
-  <h2 class="text-xl font-bold text-gray-900 mb-2">Skills</h2>
+  <h2 class="skills-heading">Skills</h2>
   <% skills_data.each_value do |section| %>
     <%= skill_section(section["title"], section["skills"]) %>
   <% end %>

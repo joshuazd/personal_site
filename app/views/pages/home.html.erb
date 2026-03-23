@@ -1,13 +1,9 @@
-<section class="text-center">
-  <h1 class="text-3xl font-extrabold text-gray-900">
-    Software Engineer
-  </h1>
-  <p class="mt-4 text-lg text-gray-600">
-    Over 9 years of experience solving complex problems with lasting impact
-  </p>
-  <div class="mt-8 flex flex-col items-stretch space-y-4 sm:flex-row sm:justify-center sm:space-x-4 sm:space-y-0">
-    <%= link_to "About Me", about_path, class: "px-6 py-3 text-lg font-semibold bg-blue-900 text-white rounded-lg hover:bg-blue-800" %>
-    <%= link_to "View My Work", work_path, class: "px-6 py-3 text-lg font-semibold bg-blue-900 text-white rounded-lg hover:bg-blue-800" %>
-    <%= link_to "Get in Touch", contact_path, class: "px-6 py-3 text-lg font-semibold bg-blue-900 text-white rounded-lg hover:bg-blue-800" %>
+<section class="hero">
+  <h1>Software Engineer</h1>
+  <p>Over 9 years of experience solving complex problems with lasting impact</p>
+  <div class="hero-actions">
+    <%= link_to "About Me", about_path, class: "btn btn-lg" %>
+    <%= link_to "View My Work", work_path, class: "btn btn-lg" %>
+    <%= link_to "Get in Touch", contact_path, class: "btn btn-lg" %>
   </div>
 </section>
