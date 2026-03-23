@@ -47,15 +47,18 @@ jobs:
             /home/joshua/.rbenv/versions/3.4.3/bin/bundle config set without 'development test'
             /home/joshua/.rbenv/versions/3.4.3/bin/bundle install
 
+      - name: Set up SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
+
       - name: Copy prebuilt assets to server
-        uses: appleboy/scp-action@v0.1.7
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          port: ${{ secrets.SSH_PORT }}
-          username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          source: public/assets
-          target: /var/www/personal_site
+        run: >
+          rsync -avz --delete -e "ssh -i ~/.ssh/deploy_key -p ${{ secrets.SSH_PORT }}"
+          public/assets/
+          ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/var/www/personal_site/public/assets/
 
       - name: Generate PDF and restart
         uses: appleboy/ssh-action@v1.2.5
