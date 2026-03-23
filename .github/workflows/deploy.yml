@@ -14,11 +14,61 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
     steps:
-      - name: Deploy to server
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: .ruby-version
+          bundler-cache: true
+
+      - name: Precompile assets
+        env:
+          SECRET_KEY_BASE_DUMMY: 1
+        run: bundle exec rails assets:precompile
+
+      - name: Fetch and checkout on server
         uses: appleboy/ssh-action@v1.2.5
         with:
           host: ${{ secrets.SSH_HOST }}
           port: ${{ secrets.SSH_PORT }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: echo "Deployment triggered"
+          script: |
+            set -e
+            set -o allexport
+            source /etc/personal_site/personal_site.env
+            set +o allexport
+            git --git-dir=/home/joshua/bare_site.git fetch origin main:main
+            git --work-tree=/var/www/personal_site --git-dir=/home/joshua/bare_site.git checkout -f
+            cd /var/www/personal_site
+            /home/joshua/.rbenv/versions/3.4.3/bin/bundle config set deployment true
+            /home/joshua/.rbenv/versions/3.4.3/bin/bundle config set without 'development test'
+            /home/joshua/.rbenv/versions/3.4.3/bin/bundle install
+
+      - name: Copy prebuilt assets to server
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          port: ${{ secrets.SSH_PORT }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          source: public/assets
+          target: /var/www/personal_site
+
+      - name: Generate PDF and restart
+        uses: appleboy/ssh-action@v1.2.5
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          port: ${{ secrets.SSH_PORT }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            set -e
+            set -o allexport
+            source /etc/personal_site/personal_site.env
+            set +o allexport
+            cd /var/www/personal_site
+            /home/joshua/.rbenv/versions/3.4.3/bin/bundle exec rails "pdf:generate[false]"
+            sudo systemctl restart personal_site
