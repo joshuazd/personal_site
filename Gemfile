@@ -51,6 +51,6 @@ group :test do
   gem "selenium-webdriver"
 end
 
-gem "pry", "~> 0.16.0"
+gem "pry", "~> 0.16.1"
 
 gem "foreman", "~> 0.90.0"
